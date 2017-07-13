@@ -14,6 +14,14 @@ public class Card {
         return (face + "(" +  suit + ")");
     }
     
+    public Face getFace() {
+        return this.face;
+    }
+    
+    public Suit getSuit() {
+        return this.suit;
+    }
+    
 }
 
 

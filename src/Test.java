@@ -3,12 +3,8 @@
  */
 public class Test {
     public static void main(String[] args) {
-        Deck d = new Deck();
-    
-        while(!d.isEmpty()) {
-            System.out.println(d.Count() + ". " + d.Draw());
-            
-        }
+        BlackJackBoard b = new BlackJackBoard();
+        b.NewGame();
     
     }
 }

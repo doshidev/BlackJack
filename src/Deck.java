@@ -6,15 +6,17 @@ import java.util.Stack;
  */
 public class Deck {
     private Stack<Card> deckPack;
-    
+    private int numOfDecks;
     public Deck() {
+        this.numOfDecks = 1;
         this.deckPack = new Stack<>();
-        for ( Suit s : Suit.values()) {
-            for (Face f : Face.values()) {
-                deckPack.push(new Card(f, s));
-            }
-        }
-        Collections.shuffle(deckPack);
+        fill(this.numOfDecks, this.deckPack);
+    }
+    
+    public Deck(int count) {
+        this.deckPack = new Stack<>();
+        this.numOfDecks = count;
+        fill(this.numOfDecks, this.deckPack);
     }
     
     public void Shuffle() {
@@ -22,7 +24,10 @@ public class Deck {
     }
     
     public Card Draw() {
-        return this.deckPack.pop();
+        if(!this.deckPack.isEmpty()){
+            return this.deckPack.pop();
+        }
+        return null;
     }
     
     public int Count() {
@@ -31,5 +36,17 @@ public class Deck {
     
     public Boolean isEmpty() {
         return this.deckPack.isEmpty();
+    }
+    
+    public Stack<Card> fill(int cnt, Stack<Card> deck) {
+        for (int i = 0; i < cnt; i++) {
+            for ( Suit s : Suit.values()) {
+                for (Face f : Face.values()) {
+                    deck.push(new Card(f, s));
+                }
+            }
+            Collections.shuffle(deck);
+        }
+        return deck;
     }
 }
